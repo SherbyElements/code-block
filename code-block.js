@@ -7,6 +7,9 @@ class CodeBlock extends LitElement {
       language: {
         type: String,
       },
+      languageFile: {
+	type: String,
+      },
       theme: {
         type: String,
       },
@@ -15,7 +18,8 @@ class CodeBlock extends LitElement {
 
   constructor() {
     super();
-    this.language = '/node_modules/prismjs/components/prism-clike.min.js';
+    this.language = 'clike';
+    this.languageFile = '/node_modules/prismjs/components/prism-clike.min.js';
     this.theme = '/node_modules/prismjs/themes/prism.css';
     this.lineNumbers = false;
   }
@@ -38,7 +42,7 @@ class CodeBlock extends LitElement {
   }
 
   async __loadLanguage() {
-    await import(this.language);
+    await import(this.languageFile);
   }
 
   static get styles() {
