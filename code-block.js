@@ -1,19 +1,19 @@
-import { LitElement, html, css, } from 'lit';
+import {LitElement, html, css} from 'lit';
 import 'prismjs/prism.js';
 
 class CodeBlock extends LitElement {
   static get properties() {
-     return {
+    return {
       language: {
         type: String,
       },
       languageFile: {
-	type: String,
+        type: String,
       },
       theme: {
         type: String,
       },
-    }
+    };
   }
 
   constructor() {

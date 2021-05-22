@@ -32,8 +32,7 @@
       "classes": "never",
       "switches": "never"
     }],
-    "space-in-parens": "error",
-    "singleQuote": 2
+    "space-in-parens": "error"
   },
   "globals": {
     "customElements": false,
