@@ -1,6 +1,7 @@
 import {LitElement, html, css} from 'lit';
 import 'prismjs/prism.js';
 import {getLanguageOfAlias} from "./get-language-of-alias";
+import {getLanguageName} from "./get-language-name";
 
 class CodeBlock extends LitElement {
   static get properties() {
@@ -64,11 +65,8 @@ class CodeBlock extends LitElement {
         position: relative;
       }
       
-      pre.language-javascript:before {
-        content: "JavaScript";
-      }
-      
       pre:before {
+        content: attr(data-language-name);
         color: var(--code-block-language-color);
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
         font-weight: 700;
@@ -86,7 +84,10 @@ render()
   const themeFile = this.themeFileTemplate.replace("{THEME}", this.theme)
   return html`
     <link rel="stylesheet" href="${themeFile}">
-    <pre class="language-${this.language}"><code id="output"></code></pre>
+    <pre 
+        class="language-${this.language}"
+        data-language-name="${getLanguageName(this.language)}"
+    ><code id="output"></code></pre>
 
     <div id="hide">
       <slot id="code"></slot>
