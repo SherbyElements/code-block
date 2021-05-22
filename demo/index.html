@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
     <title>code-block demo</title>
 
@@ -21,42 +22,42 @@
     </custom-style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic code-block demo</h3>
-      <demo-snippet>
-        <template>
-<code-block language="javascript">
-function helloWorld(say) {
-  console.log(say);
-}
+  <div class="vertical-section-container centered">
+    <h3>Basic code-block demo</h3>
+    <demo-snippet>
+      <template>
+        <code-block language="javascript">
+          function helloWorld(say) {
+          console.log(say);
+          }
 
-helloWorld('Hi there!');
-</code-block>
-        </template>
-      </demo-snippet>
+          helloWorld('Hi there!');
+        </code-block>
+      </template>
+    </demo-snippet>
 
-      <h3>code-block custom theme</h3>
-      <demo-snippet>
-        <template>
-<code-block language="c" theme="/node_modules/prismjs/themes/prism-twilight.css">
-#include &lt;stdio.h&gt;
-int main() {
-  printf("Hello, I am C World!");
-}
-</code-block>
-        </template>
-      </demo-snippet>
+    <h3>code-block custom theme</h3>
+    <demo-snippet>
+      <template>
+        <code-block language="c" theme="/node_modules/prismjs/themes/prism-twilight.css">
+          #include &lt;stdio.h&gt;
+          int main() {
+          printf("Hello, I am C World!");
+          }
+        </code-block>
+      </template>
+    </demo-snippet>
 
-      <h3>code-block non-clike language</h3>
-      <demo-snippet>
-        <template>
-<code-block language="fortran" theme="/node_modules/prismjs/themes/prism-okaidia.css">
-program HelloWorld
-  write (*,*) 'Hello, world!'   ! This is an inline comment
-end program HelloWorld
-</code-block>
-        </template>
-      </demo-snippet>
-    </div>
+    <h3>code-block non-clike language</h3>
+    <demo-snippet>
+      <template>
+        <code-block language="fortran" theme="/node_modules/prismjs/themes/prism-okaidia.css">
+          program HelloWorld
+          write (*,*) 'Hello, world!' ! This is an inline comment
+          end program HelloWorld
+        </code-block>
+      </template>
+    </demo-snippet>
+  </div>
   </body>
 </html>
