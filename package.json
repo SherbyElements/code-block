@@ -7,24 +7,23 @@
     "url": "git@github.com:justinribeiro/code-block.git"
   },
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "code-block.js",
   "module": "code-block.js",
   "dependencies": {
-    "lit": "^2.0.0-rc.1",
-    "prismjs": "^1.17.1"
+    "lit": "^2.0.0-rc.2",
+    "prismjs": "^1.23.0"
   },
   "peerDependencies": {
-    "prismjs": "^1.17.1"
+    "prismjs": "^1.23.0"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
-    "@web/dev-server": "^0.1.16",
-    "@webcomponents/webcomponentsjs": "^2.4.3",
-    "eslint": "^7.5.0",
+    "@web/dev-server": "^0.1.17",
+    "@webcomponents/webcomponentsjs": "^2.5.0",
+    "eslint": "^7.27.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-html": "^6.0.2",
-    "wct-browser-legacy": "^1.0.2"
+    "eslint-plugin-html": "^6.1.2"
   },
   "scripts": {
     "dev": "web-dev-server --node-resolve --watch --open"
