@@ -26,36 +26,47 @@
     <h3>Basic code-block demo</h3>
     <demo-snippet>
       <template>
-        <code-block language="javascript">
-          function helloWorld(say) {
-          console.log(say);
-          }
+<code-block>
+## Default values
+  * `language`: "markdown"
+  * `theme`: "twilight"
+</code-block>
+      </template>
+    </demo-snippet>
 
-          helloWorld('Hi there!');
-        </code-block>
+    <h3>Basic code-block demo</h3>
+    <demo-snippet>
+      <template>
+<code-block language="javascript">
+function helloWorld(say) {
+  console.log(say);
+}
+
+helloWorld('Hi there!');
+</code-block>
       </template>
     </demo-snippet>
 
     <h3>code-block custom theme</h3>
     <demo-snippet>
       <template>
-        <code-block language="c" theme="/node_modules/prismjs/themes/prism-twilight.css">
-          #include &lt;stdio.h&gt;
-          int main() {
-          printf("Hello, I am C World!");
-          }
-        </code-block>
+<code-block language="c" theme="twilight">
+#include &lt;stdio.h&gt;
+int main() {
+  printf("Hello, I am C World!");
+}
+</code-block>
       </template>
     </demo-snippet>
 
     <h3>code-block non-clike language</h3>
     <demo-snippet>
       <template>
-        <code-block language="fortran" theme="/node_modules/prismjs/themes/prism-okaidia.css">
-          program HelloWorld
-          write (*,*) 'Hello, world!' ! This is an inline comment
-          end program HelloWorld
-        </code-block>
+<code-block language="fortran" theme="funky">
+program HelloWorld
+write (*,*) 'Hello, world!' ! This is an inline comment
+end program HelloWorld
+</code-block>
       </template>
     </demo-snippet>
   </div>
