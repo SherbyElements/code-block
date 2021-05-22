@@ -3,7 +3,7 @@ import 'prismjs/prism.js';
 import {getLanguageOfAlias} from "./get-language-of-alias";
 import {getLanguageName} from "./get-language-name";
 
-class CodeBlock extends LitElement {
+export class CodeBlock extends LitElement {
   static get properties() {
     return {
       language: {type: String,},
@@ -88,5 +88,3 @@ class CodeBlock extends LitElement {
     `;
   }
 }
-
-customElements.define('code-block', CodeBlock);
