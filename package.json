@@ -1,39 +1,55 @@
 {
   "name": "@justinribeiro/code-block",
+  "version": "1.1.0",
   "description": "A web component that utilizes Prism.js and LitElement to display nicely formatted code.",
-  "author": "Justin Ribeiro <justin@justinribeiro.com>",
+  "keywords": [
+    "web components",
+    "code",
+    "code-block",
+    "language",
+    "lit",
+    "lit-html",
+    "lit-element",
+    "prismjs"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:justinribeiro/code-block.git"
   },
   "license": "MIT",
-  "version": "1.1.0",
+  "author": "Justin Ribeiro <justin@justinribeiro.com>",
   "main": "code-block.js",
   "module": "code-block.js",
+  "scripts": {
+    "format": "npm-run-all format:*",
+    "format:eslint": "npm run lint:eslint -- --fix",
+    "format:prettier": "npm run lint:prettier -- --write",
+    "start": "web-dev-server --node-resolve --watch --open",
+    "lint": "npm-run-all lint:*",
+    "lint:eslint": "eslint . --ext html,js,json --cache",
+    "lint:prettier": "prettier **/*.{js,json,md,yml} --check"
+  },
+  "prettier": "prettier-config-udes",
   "dependencies": {
     "lit": "^2.0.0-rc.2",
-    "prismjs": "^1.23.0"
-  },
-  "peerDependencies": {
     "prismjs": "^1.23.0"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@web/dev-server": "^0.1.17",
     "@webcomponents/webcomponentsjs": "^2.5.0",
-    "eslint": "^7.27.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-plugin-html": "^6.1.2"
+    "babel-eslint": "^10.1.0",
+    "eslint-config-udes": "^1.0.1",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-lit": "^1.4.1",
+    "eslint-plugin-markdown": "^2.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.0",
+    "prettier-config-udes": "^1.0.0"
   },
-  "scripts": {
-    "lint": "eslint . --ext html,js --cache",
-    "format": "npm run lint -- --fix",
-    "start": "web-dev-server --node-resolve --watch --open"
-  },
-  "keywords": [
-    "web components",
-    "lit-html",
-    "lit-element",
-    "prismjs"
-  ]
+  "peerDependencies": {
+    "prismjs": "^1.23.0"
+  }
 }

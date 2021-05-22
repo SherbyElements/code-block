@@ -1,15 +1,15 @@
-import {css, html, LitElement} from 'lit';
+import { css, html, LitElement } from 'lit';
 import 'prismjs/prism.js';
-import {getLanguageOfAlias} from "./get-language-of-alias";
-import {getLanguageName} from "./get-language-name";
+import { getLanguageOfAlias } from './get-language-of-alias';
+import { getLanguageName } from './get-language-name';
 
 export class CodeBlock extends LitElement {
   static get properties() {
     return {
-      language: {type: String,},
-      languageFileTemplate: {type: String,},
-      theme: {type: String,},
-      themeFileTemplate: {type: String,},
+      language: { type: String },
+      languageFileTemplate: { type: String },
+      theme: { type: String },
+      themeFileTemplate: { type: String },
     };
   }
 
@@ -17,13 +17,12 @@ export class CodeBlock extends LitElement {
     super();
     this.language = 'markdown';
     this.languageFileTemplate = `/node_modules/prismjs/components/prism-{LANGUAGE}.min.js`;
-    this.theme = "twilight"
+    this.theme = 'twilight';
     this.themeFileTemplate = `/node_modules/prismjs/themes/prism-{THEME}.css`;
   }
 
   async __loadLanguage() {
-    const languageFile = this.languageFileTemplate.replace("{LANGUAGE}",
-        getLanguageOfAlias(this.language))
+    const languageFile = this.languageFileTemplate.replace('{LANGUAGE}', getLanguageOfAlias(this.language));
     await import(languageFile);
   }
 
@@ -41,8 +40,7 @@ export class CodeBlock extends LitElement {
     const codeClean = codeCombined.replace(/^\s+|\s+$/g, '');
 
     // Set to our styled block
-    this.shadowRoot.querySelector('#output').innerHTML = Prism.highlight(
-        codeClean, grammar, this.language);
+    this.shadowRoot.querySelector('#output').innerHTML = Prism.highlight(codeClean, grammar, this.language);
   }
 
   static get styles() {
@@ -50,19 +48,20 @@ export class CodeBlock extends LitElement {
       :host {
         --code-block-language-color: #4ab9f8;
       }
-    
+
       #hide {
         display: none !important;
       }
-      
+
       pre {
         position: relative;
       }
-      
+
       pre:before {
         content: attr(data-language-name);
         color: var(--code-block-language-color);
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
+          Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
         font-weight: 700;
         letter-spacing: 1px;
         position: absolute;
@@ -74,12 +73,12 @@ export class CodeBlock extends LitElement {
   }
 
   render() {
-    const themeFile = this.themeFileTemplate.replace("{THEME}", this.theme)
+    const themeFile = this.themeFileTemplate.replace('{THEME}', this.theme);
     return html`
-      <link rel="stylesheet" href="${themeFile}">
+      <link rel="stylesheet" href="${themeFile}" />
       <pre
-          class="language-${this.language} line-numbers"
-          data-language-name="${getLanguageName(this.language)}"
+        class="language-${this.language} line-numbers"
+        data-language-name="${getLanguageName(this.language)}"
       ><code id="output"></code></pre>
 
       <div id="hide">

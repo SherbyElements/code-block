@@ -1,6 +1,5 @@
 [![npm version](https://badge.fury.io/js/%40justinribeiro%2Fcode-block.svg)](https://badge.fury.io/js/%40justinribeiro%2Fcode-block)
 
-
 # \<code-block\>
 
 > A web component that displays colorfully formatted code with Prism.js and LitElement.
@@ -9,14 +8,13 @@
 
 ## Features
 
-* Loads [Prism.js](https://prismjs.com/) language definitions on demand via dynamic imports from `node_modules/prismjs/components/`
-* Loads Prism.js custom themes
-* Built as a web component on [LitElement](https://lit-element.polymer-project.org/)
+- Loads [Prism.js](https://prismjs.com/) language definitions on demand via dynamic imports from `node_modules/prismjs/components/`
+- Loads Prism.js custom themes
+- Built as a web component on [LitElement](https://lit-element.polymer-project.org/)
 
 ## Install
 
-This web component is built with ES modules in mind and is
-available on NPM:
+This web component is built with ES modules in mind and is available on NPM:
 
 Install code-block:
 
@@ -35,13 +33,7 @@ import '@justinribeiro/code-block';
 Finally, use as required:
 
 ```html
-<code-block language="javascript">
-function helloWorld(say) {
-  console.log(say);
-}
-
-helloWorld('Hi there!');
-</code-block>
+<code-block language="javascript">function helloWorld(say) { console.log(say); } helloWorld('Hi there!');</code-block>
 ```
 
 ## Attributes
@@ -49,10 +41,10 @@ helloWorld('Hi there!');
 The web component allows certain attributes to be give a little additional
 flexibility.
 
- | Name | Description | Default |
- | --- | --- | --- |
- | `language` | Code language you wish to utilize from Prism | `clike` |
- | `theme` | Path to Prism CSS theme file | `/node_modules/prismjs/themes/prism.css` |
+| Name       | Description                                  | Default                                  |
+| ---------- | -------------------------------------------- | ---------------------------------------- |
+| `language` | Code language you wish to utilize from Prism | `clike`                                  |
+| `theme`    | Path to Prism CSS theme file                 | `/node_modules/prismjs/themes/prism.css` |
 
 ## Building
 
@@ -63,18 +55,18 @@ If you want the ability to load the full spectrum of languages that Prism suppor
 ```bash
 $ git clone git@github.com:justinribeiro/code-block.git
 $ cd code-block
-$ yarn install
-$ polymer serve
+$ npm install
+$ npm start
 ```
 
 ## Polyfills Required
 
 `code-block` utilizes Custom Elements and Shadow DOM ([Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)). As you can see in the table below, you'll need some polyfills to make use of this across a wide range of browsers.
 
-| Platform Support   | Chrome | Chrome for Android | Firefox | Safari | iOS Safari | Edge | IE 11 |
-| ------------------ |:------:|:------:|:------:|:------:|:------:|:----:|:-----:|
-| Supported          |✓|✓|✓|✓|✓|✓|✓|✓|
-| Polyfill(s) Required |-|-|✓|✓|✓|✓|✓|✓|
+| Platform Support     | Chrome | Chrome for Android | Firefox | Safari | iOS Safari | Edge | IE 11 |
+| -------------------- | :----: | :----------------: | :-----: | :----: | :--------: | :--: | :---: |
+| Supported            |   ✓    |         ✓          |    ✓    |   ✓    |     ✓      |  ✓   |   ✓   |
+| Polyfill(s) Required |   -    |         -          |    ✓    |   ✓    |     ✓      |  ✓   |   ✓   |
 
 Within your project, you can load them as such:
 
