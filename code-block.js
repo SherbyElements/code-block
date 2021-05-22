@@ -21,7 +21,6 @@ class CodeBlock extends LitElement {
     this.language = 'clike';
     this.languageFile = '/node_modules/prismjs/components/prism-clike.min.js';
     this.theme = '/node_modules/prismjs/themes/prism.css';
-    this.lineNumbers = false;
   }
 
   async firstUpdated() {
