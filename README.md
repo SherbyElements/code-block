@@ -10,7 +10,7 @@
 > A Web component that displays colorfully **formatted code** with [Prism.js]
 > and [LitElement].
 
-![](/demo/default-code-block.jpg)
+![](https://raw.githubusercontent.com/SherbyElements/code-block/2.0.0/demo/default-code-block.jpg)
 
 ## Features
 
