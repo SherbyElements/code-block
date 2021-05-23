@@ -1,6 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import 'prismjs/prism.js';
-import { getLanguageOfAlias } from './get-language-of-alias';
+import { getFileOfAlias } from './get-file-of-alias';
 import { getLanguageName } from './get-language-name';
 
 export class CodeBlock extends LitElement {
@@ -15,14 +15,14 @@ export class CodeBlock extends LitElement {
 
   constructor() {
     super();
-    this.language = 'markdown';
-    this.languageFileTemplate = `/node_modules/prismjs/components/prism-{LANGUAGE}.min.js`;
-    this.theme = 'twilight';
-    this.themeFileTemplate = `/node_modules/prismjs/themes/prism-{THEME}.css`;
+    this.language ??= 'markdown';
+    this.languageFileTemplate ??= `/node_modules/prismjs/components/prism-{LANGUAGE}.min.js`;
+    this.theme ??= 'twilight';
+    this.themeFileTemplate ??= `/node_modules/prismjs/themes/prism-{THEME}.css`;
   }
 
   async __loadLanguage() {
-    const languageFile = this.languageFileTemplate.replace('{LANGUAGE}', getLanguageOfAlias(this.language));
+    const languageFile = this.languageFileTemplate.replace('{LANGUAGE}', getFileOfAlias(this.language));
     await import(languageFile);
   }
 
@@ -30,17 +30,27 @@ export class CodeBlock extends LitElement {
     await this.__loadLanguage();
 
     const nodes = this.shadowRoot.querySelector('#code').assignedNodes();
-    let codeCombined = '';
+    let code = '';
+
     for (let index = 0, len = nodes.length; index < len; ++index) {
-      codeCombined += nodes[index].nodeValue;
+      const values = nodes[index].nodeValue.split('\n').map((x) => x.trimEnd());
+      values.shift();
+      values.pop();
+
+      const numberOfSpacesOfFirstLine = values[0].search(/\S|$/);
+      const spacesRegex = new RegExp(` {${numberOfSpacesOfFirstLine}}`);
+
+      values.forEach((value) => {
+        code += value.replace(spacesRegex, '') + '\n';
+      });
     }
 
-    // Strip the lead/end newlines so they don't look horrible
-    const grammar = Prism.languages[this.language];
-    const codeClean = codeCombined.replace(/^\s+|\s+$/g, '');
-
     // Set to our styled block
-    this.shadowRoot.querySelector('#output').innerHTML = Prism.highlight(codeClean, grammar, this.language);
+    this.shadowRoot.querySelector('#output').innerHTML = Prism.highlight(
+      code,
+      Prism.languages[this.language],
+      this.language,
+    );
   }
 
   static get styles() {
@@ -77,7 +87,7 @@ export class CodeBlock extends LitElement {
     return html`
       <link rel="stylesheet" href="${themeFile}" />
       <pre
-        class="language-${this.language} line-numbers"
+        class="language-${this.language}"
         data-language-name="${getLanguageName(this.language)}"
       ><code id="output"></code></pre>
 

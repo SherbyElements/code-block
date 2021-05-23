@@ -1,36 +1,42 @@
-[![npm version](https://badge.fury.io/js/%40justinribeiro%2Fcode-block.svg)](https://badge.fury.io/js/%40justinribeiro%2Fcode-block)
+[![npm](https://img.shields.io/npm/v/@sherby/code-block?logo=npm)](https://www.npmjs.com/package/@sherby/code-block)
+[![GitHub](https://img.shields.io/github/v/release/SherbyElements/code-block?label=GitHub&logo=github&sort=semver)](https://github.com/SherbyElements/code-block/releases)
+[![webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/SherbyElements/code-block)
+[![MIT License](https://img.shields.io/npm/l/@sherby/code-block)](https://github.com/SherbyElements/code-block/blob/master/LICENSE.md)
+[![Number of downloads](https://img.shields.io/npm/dt/@sherby/code-block)](https://npm-stat.com/charts.html?package=%40sherby%2Fsherby-metadata)
+[![BundlePhobia](https://img.shields.io/bundlephobia/minzip/@sherby/code-block)](https://bundlephobia.com/result?p=@sherby/code-block)
 
 # \<code-block\>
 
-> A web component that displays colorfully formatted code with Prism.js and LitElement.
+> A Web component that displays colorfully **formatted code** with [Prism.js]
+> and [LitElement].
 
-![screenshot of code-block](https://user-images.githubusercontent.com/643503/56254054-0ce02600-6074-11e9-9caf-e9dcc25b3ab1.png)
+![](/demo/default-code-block.jpg)
 
 ## Features
 
-- Loads [Prism.js](https://prismjs.com/) language definitions on demand via dynamic imports from `node_modules/prismjs/components/`
-- Loads Prism.js custom themes
-- Built as a web component on [LitElement](https://lit-element.polymer-project.org/)
+- Loads [Prism.js] language definitions and custom themes
+  on demand via dynamic imports
+- Support the languages aliases of Prism.js
+- Add the language name automatically in the top-right corner of the block
+- Remove automatically beginning spaces to allow you to format your code with indentation
+- Allow to extend the class for further customizations
+- Built as a web component on [LitElement]
 
-## Install
+## Installation
 
-This web component is built with ES modules in mind and is available on NPM:
-
-Install code-block:
-
-```sh
-npm i @justinribeiro/code-block
-# or
-yarn add @justinribeiro/code-block
+```bash
+npm install @sherby/code-block
 ```
 
-After install, import into your project:
+## Use
 
-```js
-import '@justinribeiro/code-block';
+To use this element, import it in your component:
+
+```javascript
+import '@sherby/code-block';
 ```
 
-Finally, use as required:
+And add a `code-block` element in your component template.
 
 ```html
 <code-block language="javascript">function helloWorld(say) { console.log(say); } helloWorld('Hi there!');</code-block>
@@ -38,25 +44,35 @@ Finally, use as required:
 
 ## Attributes
 
-The web component allows certain attributes to be give a little additional
-flexibility.
+You can override the following attributes to met your needs:
 
-| Name       | Description                                  | Default                                  |
-| ---------- | -------------------------------------------- | ---------------------------------------- |
-| `language` | Code language you wish to utilize from Prism | `clike`                                  |
-| `theme`    | Path to Prism CSS theme file                 | `/node_modules/prismjs/themes/prism.css` |
+| Name                   | Description                                                                                                             | Default                                                    |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `language`             | Code language you wish to utilize from Prism                                                                            | `markdown`                                                 |
+| `languageFileTemplate` | Template URL where the language file can be automatically imported, where `{LANGUAGE}` will be replaced by the language | `/node_modules/prismjs/components/prism-{LANGUAGE}.min.js` |
+| `theme`                | Path to Prism CSS theme file                                                                                            | `twilight`                                                 |
+| `themeFileTemplate`    | Template URL where the theme file can be automatically imported, where `{THEME}` will be replaced by the theme          | `/node_modules/prismjs/themes/prism.css`                   |
 
 ## Building
 
-If you want the ability to load the full spectrum of languages that Prism supports, you'll want to make sure your build script includes the `/node_modules/prismjs/**`, as there are many many language resources (and you don't want them all in your bundle, utilize the dynamic loading).
+If you want the ability to load the full spectrum of languages that Prism
+supports, you'll want to make sure your build script includes the
+`/node_modules/prismjs/**`, as there are many language resources.
 
 ## Develop
 
 ```bash
-$ git clone git@github.com:justinribeiro/code-block.git
-$ cd code-block
-$ npm install
-$ npm start
+# Clone the project
+git clone git@github.com:sherby/code-block.git
+
+# Go to the project directory
+cd code-block
+
+# Install the dependencies
+npm install
+
+# Start the demo page
+npm start
 ```
 
 ## Polyfills Required
@@ -73,3 +89,28 @@ Within your project, you can load them as such:
 ```html
 <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 ```
+
+## Thanks
+
+Special thanks to [Justin Ribeiro](https://github.com/justinribeiro) for his [app-metadata](https://github.com/justinribeiro/code-block) component that this project is forked from.
+
+## Publish
+
+Increment the `version` defined in the `package.json` file and run the command below to publish the module in the
+registry:
+
+```bash
+# Dry run
+npm publish --dry-run
+
+# For real (are you really sure?)
+npm publish
+```
+
+## License
+
+The [MIT License][1] (MIT)
+
+[1]: https://opensource.org/licenses/MIT
+[prism.js]: https://prismjs.com/
+[litelement]: https://lit.dev/

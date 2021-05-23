@@ -1,25 +1,45 @@
 {
-  "name": "@justinribeiro/code-block",
-  "version": "1.1.0",
+  "name": "@sherby/code-block",
+  "version": "2.0.0",
   "description": "A web component that utilizes Prism.js and LitElement to display nicely formatted code.",
   "keywords": [
-    "web components",
     "code",
     "code-block",
+    "element",
     "language",
     "lit",
-    "lit-html",
     "lit-element",
-    "prismjs"
+    "lit-html",
+    "prismjs",
+    "sherby",
+    "web components"
   ],
+  "homepage": "https://github.com/SherbyElements/code-block",
+  "bugs": {
+    "url": "https://github.com/SherbyElements/code-block/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "git@github.com:justinribeiro/code-block.git"
+    "url": "https://github.com/SherbyElements/code-block.git"
   },
   "license": "MIT",
-  "author": "Justin Ribeiro <justin@justinribeiro.com>",
+  "contributors": [
+    {
+      "name": "Justin Ribeiro",
+      "email": "justin@justinribeiro.com",
+      "url": "https://justinribeiro.com/"
+    },
+    {
+      "name": "Benjamin Rancourt",
+      "email": "Benjamin.Rancourt@USherbrooke.ca",
+      "url": "https://www.benjaminrancourt.ca/"
+    }
+  ],
   "main": "code-block.js",
-  "module": "code-block.js",
+  "files": [
+    "code-block.js",
+    "src/*.js"
+  ],
   "scripts": {
     "format": "npm-run-all format:*",
     "format:eslint": "npm run lint:eslint -- --fix",
@@ -27,7 +47,7 @@
     "start": "web-dev-server --node-resolve --watch --open",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "eslint . --ext html,js,json --cache",
-    "lint:prettier": "prettier **/*.{js,json,md,yml} --check"
+    "lint:prettier": "prettier **/*.{js,json,md} --check"
   },
   "prettier": "prettier-config-udes",
   "dependencies": {

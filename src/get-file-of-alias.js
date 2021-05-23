@@ -1,4 +1,4 @@
-const getLanguageOfAlias = (language) => {
+const getFileOfAlias = (language) => {
   switch (language) {
     case 'g4':
       return 'antlr4';
@@ -139,4 +139,4 @@ const getLanguageOfAlias = (language) => {
   }
 };
 
-export { getLanguageOfAlias };
+export { getFileOfAlias };
