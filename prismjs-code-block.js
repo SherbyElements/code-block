@@ -4,8 +4,9 @@ class PrismjsCodeBlock extends CodeBlock {
   constructor() {
     super();
 
-    this.languageFileTemplate ??= `/prismjs/prism-{LANGUAGE}.min.js`;
-    this.themeFileTemplate ??= `/prismjs/prism-{THEME}.css`;
+    this.theme = 'twilight';
+    this.languageFileTemplate = `/prismjs/prism-{LANGUAGE}.min.js`;
+    this.themeFileTemplate = `/prismjs/prism-{THEME}.css`;
   }
 }
 

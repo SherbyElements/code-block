@@ -14,11 +14,12 @@
 
 ## Features
 
-- Loads [Prism.js] language definitions and custom themes
-  on demand via dynamic imports
+- Loads [Prism.js] language definitions and custom themes on demand via dynamic
+  imports
 - Support the languages aliases of Prism.js
 - Add the language name automatically in the top-right corner of the block
-- Remove automatically beginning spaces to allow you to format your code with indentation
+- Remove automatically beginning spaces to allow you to format your code with
+  indentation
 - Allow to extend the class for further customizations
 - Built as a web component on [LitElement]
 

@@ -6,6 +6,7 @@ import { getLanguageName } from './get-language-name';
 export class CodeBlock extends LitElement {
   static get properties() {
     return {
+      defaultLanguage: { type: String },
       language: { type: String },
       languageFileTemplate: { type: String },
       theme: { type: String },
@@ -15,14 +16,14 @@ export class CodeBlock extends LitElement {
 
   constructor() {
     super();
-    this.language ??= 'markdown';
+    this.defaultLanguage ??= 'markdown';
     this.languageFileTemplate ??= `/node_modules/prismjs/components/prism-{LANGUAGE}.min.js`;
-    this.theme ??= 'twilight';
     this.themeFileTemplate ??= `/node_modules/prismjs/themes/prism-{THEME}.css`;
   }
 
   async __loadLanguage() {
-    const languageFile = this.languageFileTemplate.replace('{LANGUAGE}', getFileOfAlias(this.language));
+    const language = this.language || this.defaultLanguage;
+    const languageFile = this.languageFileTemplate.replace('{LANGUAGE}', getFileOfAlias(language));
     await import(languageFile);
   }
 
@@ -46,11 +47,8 @@ export class CodeBlock extends LitElement {
     }
 
     // Set to our styled block
-    this.shadowRoot.querySelector('#output').innerHTML = Prism.highlight(
-      code,
-      Prism.languages[this.language],
-      this.language,
-    );
+    const language = this.language || this.defaultLanguage;
+    this.shadowRoot.querySelector('#output').innerHTML = Prism.highlight(code, Prism.languages[language], language);
   }
 
   static get styles() {
@@ -67,7 +65,7 @@ export class CodeBlock extends LitElement {
         position: relative;
       }
 
-      pre:before {
+      pre:not([data-language-name='']):before {
         content: attr(data-language-name);
         color: var(--code-block-language-color);
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif,
@@ -83,13 +81,15 @@ export class CodeBlock extends LitElement {
   }
 
   render() {
-    const themeFile = this.themeFileTemplate.replace('{THEME}', this.theme);
+    const isDefaultTheme = !this.theme;
+    const searchValue = isDefaultTheme ? '-{THEME}' : '{THEME}';
+    const themeFile = this.themeFileTemplate.replace(searchValue, this.theme || '');
+    const language = this.language || this.defaultLanguage;
+    const languageName = this.language ? getLanguageName(language) : '';
+
     return html`
       <link rel="stylesheet" href="${themeFile}" />
-      <pre
-        class="language-${this.language}"
-        data-language-name="${getLanguageName(this.language)}"
-      ><code id="output"></code></pre>
+      <pre class="language-${language}" data-language-name="${languageName}"><code id="output"></code></pre>
 
       <div id="hide">
         <slot id="code"></slot>
