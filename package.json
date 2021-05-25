@@ -1,6 +1,6 @@
 {
   "name": "@sherby/code-block",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A web component that utilizes Prism.js and LitElement to display nicely formatted code.",
   "keywords": [
     "code",

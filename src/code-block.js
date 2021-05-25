@@ -35,8 +35,15 @@ export class CodeBlock extends LitElement {
 
     for (let index = 0, len = nodes.length; index < len; ++index) {
       const values = nodes[index].nodeValue.split('\n').map((x) => x.trimEnd());
-      values.shift();
-      values.pop();
+
+      // Remove empty lines at the beginning and at the end
+      if (!values[values.length - 1].trim()) {
+        values.pop();
+      }
+
+      if (!values[0].trim()) {
+        values.shift();
+      }
 
       const numberOfSpacesOfFirstLine = values[0].search(/\S|$/);
       const spacesRegex = new RegExp(` {${numberOfSpacesOfFirstLine}}`);
