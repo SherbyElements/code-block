@@ -93,7 +93,7 @@ Within your project, you can load them as such:
 
 ## Thanks
 
-Special thanks to [Justin Ribeiro](https://github.com/justinribeiro) for his [app-metadata](https://github.com/justinribeiro/code-block) component that this project is forked from.
+Special thanks to [Justin Ribeiro](https://github.com/justinribeiro) for his [code-block](https://github.com/justinribeiro/code-block) component that this project is forked from.
 
 ## Publish
 
