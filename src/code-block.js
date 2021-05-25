@@ -72,6 +72,10 @@ export class CodeBlock extends LitElement {
         position: relative;
       }
 
+      pre:not([data-language-name='']) {
+        padding-top: 2em;
+      }
+
       pre:not([data-language-name='']):before {
         content: attr(data-language-name);
         color: var(--code-block-language-color);
@@ -80,8 +84,8 @@ export class CodeBlock extends LitElement {
         font-weight: 700;
         letter-spacing: 1px;
         position: absolute;
-        right: 0.75em;
-        top: 0.75em;
+        right: 1em;
+        top: 0.45em;
         z-index: 1;
       }
     `;
